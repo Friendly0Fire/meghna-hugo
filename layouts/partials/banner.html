@@ -7,7 +7,13 @@
 	<!-- this image is for trigger this section fallback background image -->
 	<img style="display: none;" onerror="this.onerror=null;this.parentElement.style.backgroundImage= 'url({{ .bg_image | absURL }})'" src="{{ .bg_image_webp | absURL }}" />
 
-	<div class="block">
+	{{ if .bg_video }}
+		<video autoplay loop poster="{{ .bg_image | absURL }}">
+			<source src="{{ .bg_video | absURL }}" type="video/webm">
+		</video>
+	{{ end }}
+
+	<div class="block {{ if .bg_video }} bg-video {{ end }}">
 		{{ if .icon }}
 		<div class="video-button">
 			<i class="{{ .icon }}"></i>

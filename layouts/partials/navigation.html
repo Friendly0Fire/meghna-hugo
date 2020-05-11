@@ -4,9 +4,8 @@
 			<a class="navbar-brand p-0" href="{{ .Site.BaseURL | relLangURL }}">
 				{{ if .Site.Params.logo }}
 				<img class="img-fluid" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}">
-				{{ else }}
-				{{ .Site.Title }}
 				{{ end }}
+				<h1 class="logo">{{ .Site.Title }}</h1>
 			</a>
 
 			<button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation">
@@ -18,23 +17,22 @@
 					<li class="nav-item"><a class="nav-link" href="#body">{{ .Site.Params.home }}</a></li>
 					{{ if .IsHome }}
 					{{ range .Site.Menus.main }}
-					<li class="nav-item"><a class="nav-link" href="#{{ .URL }}">{{ .Name }}</a></li>
+					<li class="nav-item"><a class="nav-link" href="#{{ .URL }}">{{ .Pre }} {{ .Name }}</a></li>
 					{{ end }}
 
 					{{ else }}
 
 					{{ range .Site.Menus.main }}
-					<li class="nav-item"><a class="nav-link" href="{{ $.Site.BaseURL | relLangURL }}#{{ .URL }}">{{ .Name }}</a>
+					<li class="nav-item"><a class="nav-link" href="{{ $.Site.BaseURL | relLangURL }}#{{ .URL }}">{{ .Pre }} {{ .Name }}</a>
 					</li>
 					{{ end }}
 					{{ end }}
-					
 
 					{{ range .Site.Menus.static }}
-					<li class="nav-item"><a class="nav-link" target="_blank" href="{{ .URL }}">{{ .Name }}</a>
+					<li class="nav-item"><a class="nav-link" target="_blank" href="{{ .URL }}">{{ .Pre }} {{ .Name }}</a>
 					</li>
 					{{ end }}
-					
+
 				</ul>
 				<!-- Language List -->
 				{{- if .Site.IsMultiLingual }}

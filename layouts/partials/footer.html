@@ -15,10 +15,6 @@
 
 				{{"<!-- copyright -->" | safeHTML}}
 				<div class="copyright text-center">
-					<a href="{{ .Site.BaseURL | absLangURL }}">
-						<img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
-					</a>
-					<br>
 					<p>{{ .Site.Params.copyright | markdownify }}</p>
 				</div>
 			</div>
