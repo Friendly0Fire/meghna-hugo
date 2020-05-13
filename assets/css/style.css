@@ -121,7 +121,7 @@ a:hover {
 }
 
 .border-meghna {
-  border-top: 2px solid rgba(236, 239, 241, 0.07);
+  border-top: 2px solid rgba(236, 239, 241, 0.3);
   height: 1px;
   margin: 15px auto 0;
   position: relative;
@@ -133,10 +133,30 @@ a:hover {
   content: '';
   height: 6px;
   left: 50%;
-  margin-left: -20px;
+  margin-left: -25px;
   position: absolute;
   top: -4px;
   width: 50px;
+  background-color: #4EB5DE;
+}
+
+.border-meghna-lg {
+  border-top: 2px solid rgba(236, 239, 241, 0.5);
+  height: 1px;
+  margin: 15px auto 0;
+  position: relative;
+  width: 50%;
+}
+
+.border-meghna-lg:before {
+  background-color: #fff;
+  content: '';
+  height: 6px;
+  left: 50%;
+  margin-left: -40px;
+  position: absolute;
+  top: -4px;
+  width: 80px;
   background-color: #4EB5DE;
 }
 
@@ -297,6 +317,17 @@ a:hover {
 
 .title {
   padding-bottom: 60px;
+}
+
+.title h1 {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 55px;
+  color: #fff;
+}
+
+.title h1 span {
+  color: #4EB5DE;
 }
 
 .title h2 {
@@ -1462,22 +1493,21 @@ GUIDE SECTION
 .guide-item {
   color: #CCC;
 }
-.guide-item h1 {
-  font-weight: 400;
-  font-family: "Anaheim", sans-serif;
-  color: #FFF;
-  font-size: 4em;
-}
 .img-desc {
   background-color: #26292e;
+  margin: 3em 0;
 }
 .img-desc img {
-  width: 100%;
-  margin: 0;
+  max-height: 100%;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .img-wrapper {
   padding: 0;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
