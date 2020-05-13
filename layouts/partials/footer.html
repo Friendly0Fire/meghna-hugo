@@ -1,7 +1,7 @@
 {{"<!-- end Contact Area -->" | safeHTML}}
 <footer id="footer" class="section-bg">
 	<div class="container">
-		<div class="row wow fadeInUp" data-wow-duration="500ms">
+		<div class="row" data-aos="fade-down" data-aos-duration="500">
 			<div class="col-xl-12">
 
 				{{"<!-- Footer Social Links -->" | safeHTML}}
@@ -31,6 +31,7 @@
 {{ "<!-- JS Plugins -->" | safeHTML }}
 {{ range .Site.Params.plugins.js}}
 <script src="{{ .link | absURL }}"></script>
+{{ with .code }}<script>{{ . | safeJS }}</script>{{ end }}
 {{ end }}
 
 {{ "<!-- Main Script -->" | safeHTML }}
@@ -38,7 +39,7 @@
 <script src="{{ $script.Permalink }}"></script>
 
 {{ "<!-- google analitycs -->" | safeHTML }}
-{{ with .Site.Params.google_analitycs_id }}
+{{ with .Site.Params.google_analytics_id }}
 <script>
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
