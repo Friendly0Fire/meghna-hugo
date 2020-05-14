@@ -1485,6 +1485,10 @@ figcaption {
   border-top: 1px #aaa solid;
 }
 
+#footer {
+  overflow: hidden;
+}
+
 
 /*****************************
 GUIDE SECTION
@@ -1502,12 +1506,44 @@ GUIDE SECTION
 
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+}
+.img-desc .content {
+  text-align: justify;
 }
 
 .img-wrapper {
   padding: 0;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.expander {
+  transition: all .3s ease-in 0s;
+  display: block;
+  margin: auto;
+  width: 100%;
+  border: 1px solid #AAA;
+  background-color: transparent;
+  color: #AAA;
+  text-align: center;
+  padding: 0.3em;
+  font-size: 1.5em;
+}
+
+.expander i:before {
+  content: "\f077";
+}
+
+.expander.collapsed i:before {
+  content: "\f078";
+}
+
+.expander:hover {
+  color: white;
+  border-color: white;
+  background-color: #4EB5DE;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
