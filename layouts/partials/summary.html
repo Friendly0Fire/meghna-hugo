@@ -1,10 +1,10 @@
 {{ $data := index .Site.Data .Site.Language.Lang }}
 
-{{ if $data.summary.summary.enable }}
-{{ with $data.summary.summary }}
-<section class="bg-one summary section" id="summary">
-	<div class="container">
-		<div class="row">
+{{ if $data.summary.enable }}
+<section class="bg-one summary section">
+<div class="container">
+{{ range $data.summary.summaries }}
+		<div class="row" {{ with .id }}id="{{.}}"{{ end }}>
 			<div class="col">
 				<div class="title text-center" data-aos="fade-up" data-aos-duration="1500">
 					<h2> {{ with .title }} {{ index (split . " ") 0 }} {{ end }}<span class="color">
@@ -13,9 +13,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="row row-cols-3">
-			{{ range .summary_item }}
-			<div class="col text-center my-lg-3" data-aos="fade-up" data-aos-duration="1500">
+		<div class="row row-cols-3" data-aos="fade-up" data-aos-duration="1500">
+			{{ range .summary_items }}
+			<div class="col text-center my-lg-3">
 				<a href="{{.link}}"><div class="block">
 					<div class="icon-box">
 						{{with .icon}}<i class="{{ . }}"></i>{{ end }}
@@ -28,7 +28,7 @@
 			</div>
 			{{ end }}
 		</div>
-	</div>
-</section>
 {{ end }}
+</div>
+</section>
 {{ end }}
