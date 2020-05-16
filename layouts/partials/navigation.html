@@ -1,6 +1,15 @@
-<section class="sticky-top navigation">
+<header class="sticky-top navigation">
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-dark">
+
+			{{ if eq .Page.Kind "page" }}
+			<div id="toc-toggle">
+				<a aria-controls="toc" aria-expanded="false" aria-label="Toggle table of contents" href="#">
+					<i class="fas fa-bars"></i>
+				</a>
+			</div>
+			{{ end }}
+
 			<a class="navbar-brand p-0" href="{{ .Site.BaseURL | relLangURL }}">
 				{{ if .Site.Params.logo }}
 				<img class="img-fluid" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}">
@@ -58,4 +67,17 @@
 			</div>
 		</nav>
 	</div>
-</section>
+</header>
+
+{{ if eq .Page.Kind "page" }}
+<div id="toc">
+	<div class="list-group list-group-flush">
+	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Dashboard</a>
+	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Shortcuts</a>
+	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Overview</a>
+	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Events</a>
+	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Profile</a>
+	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Status</a>
+	</div>
+</div>
+{{ end }}

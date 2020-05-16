@@ -23,13 +23,8 @@
 </footer>
 {{"<!-- /footer -->" | safeHTML}}
 
-{{ "<!-- Google Map API -->" | safeHTML }}
-{{ if .Site.Params.map.enable }}
-<script src="{{ .Site.Params.map.gmap_api | safeURL }}"></script>
-{{ end }}
-
 {{ "<!-- JS Plugins -->" | safeHTML }}
-{{ range .Site.Params.plugins.js}}
+{{ range .Site.Params.plugins.js }}
 <script src="{{ .link | absURL }}"></script>
 {{ with .code }}<script>{{ . | safeJS }}</script>{{ end }}
 {{ end }}

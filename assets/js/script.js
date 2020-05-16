@@ -9,6 +9,11 @@ $(window).on('load', function () {
 jQuery(function ($) {
 	"use strict";
 
+	$("#toc-toggle").click(function(e) {
+		e.preventDefault();
+		$("#toc").toggleClass("toggled");
+	});
+
 	/* ========================================================================= */
 	/*	lazy load initialize
 	/* ========================================================================= */
