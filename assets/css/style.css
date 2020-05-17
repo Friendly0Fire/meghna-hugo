@@ -1618,4 +1618,68 @@ GUIDE SECTION
   text-align: center;
 }
 
+.image-callout {
+  position: absolute;
+  padding: 0;
+  margin: -2px;
+  border: solid 2px white;
+  overflow: hidden;
+  z-index: 100;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.image-callout:hover {
+  border-color: #4EB5DE;
+  transform: scale(1.25);
+}
+
+.image-callout-desc {
+  position: absolute;
+  padding: 0;
+  z-index: 99;
+  overflow-y: auto;
+  transition: opacity 0.25s linear, visibility 0.25s linear 0s;
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.image-callout-desc.callout-border-bottom {
+  border-bottom: 5px solid white;
+  box-sizing: border-box;
+  margin-bottom: 2.5px;
+}
+
+.image-callout-inactive {
+  opacity: 0!important;
+  visibility: hidden;
+  transition: opacity 0.25s linear, visibility 0s linear 0.25s;
+}
+
+.image-callout-desc.callout-border-top {
+  border-top: 5px solid white;
+  box-sizing: border-box;
+  margin-top: -2.5px;
+}
+
+.image-callout-desc div {
+  margin: 1em;
+  display: block;
+}
+
+.image-callout-desc h5 {
+  padding: 0.25em;
+  border-bottom: 1px solid white;
+}
+
+.main-image {
+  margin: 0;
+  padding: 0;
+}
+
+.image-with-callouts {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
 /*# sourceMappingURL=maps/style.css.map */

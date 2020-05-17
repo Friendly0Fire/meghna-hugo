@@ -14,6 +14,12 @@ jQuery(function ($) {
 		$("#toc").toggleClass("toggled");
 	});
 
+	$(".image-callout").click(function(e) {
+		e.preventDefault();
+		$(this).parent(".image-with-callouts").children(".image-darkening").toggleClass("image-callout-inactive");
+		$(this).parent("a").next(".image-callout-desc").toggleClass("image-callout-inactive");
+	})
+
 	/* ========================================================================= */
 	/*	lazy load initialize
 	/* ========================================================================= */
