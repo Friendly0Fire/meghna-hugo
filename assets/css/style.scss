@@ -7,6 +7,38 @@ Version: 1.3
 Tags: one-page, single-page, portfolio, custom-colors, post-formats, responsive, html5, css3
 */
 
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+    scrollbar-width: $size;
+    scrollbar-color: $foreground-color $background-color;
+  }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
 @font-face {
   font-family: "Jost";
   font-weight: 400;
@@ -39,16 +71,20 @@ Tags: one-page, single-page, portfolio, custom-colors, post-formats, responsive,
   font-display: swap;
 }
 
-/*=== MEDIA QUERY ===*/
+$bg-color: #353b43;
+$fg-color: #737f8a;
+$title-color: #afbac4;
+$accent-color: #4eb5de;
+
 html {
-  background-color: #353b43;
-  color: #737f8a;
+  background-color: $bg-color;
+  color: $fg-color;
 }
 
 body {
-  background-color: #353b43;
+  background-color: $bg-color;
   font-family: "Jost", sans-serif;
-  color: #737f8a;
+  color: $fg-color;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -59,7 +95,7 @@ h4,
 h5,
 h6 {
   font-family: "Comfortaa", sans-serif;
-  color: #afbac4;
+  color: $title-color;
 }
 
 p {
@@ -71,7 +107,7 @@ p {
 }
 
 pre {
-  color: #afbac4;
+  color: $title-color;
 }
 
 h1.strong-title {
@@ -85,16 +121,16 @@ h1.strong-title {
 ::-moz-selection {
   /* Code for Firefox */
   color: #fff;
-  background: #4EB5DE;
+  background: $accent-color;
 }
 
 ::selection {
   color: #fff;
-  background: #4EB5DE;
+  background: $accent-color;
 }
 
 hr {
-  border-top: 1px solid rgba(255, 255, 255, .1);
+  border-top: 1px solid change-color($accent-color, $alpha: 0.1);
 }
 
 figure {
@@ -102,7 +138,7 @@ figure {
 }
 
 a {
-  color: #fff;
+  color: $accent-color;
   transition: all .3s ease-in 0s;
 }
 
@@ -119,7 +155,7 @@ a:hover {
 
 a:focus,
 a:hover {
-  color: #6CB670;
+  color: $accent-color;
 }
 
 .kill-margin-bottom {
@@ -136,25 +172,25 @@ a:hover {
 
 .btn {
   background-color: transparent;
-  color: #fff;
+  color: $title-color;
   padding: 10px 30px;
   border-radius: 0;
   transition: all .3s ease-in 0s;
 }
 
 .btn:focus {
-  color: #ddd;
+  color: $title-color;
 }
 
 .btn-transparent {
-  border: 1px solid #4e595f;
+  border: 1px solid $fg-color;
 }
 
 .btn-transparent:hover,
 .btn-transparent:focus {
-  background-color: #4EB5DE;
+  background-color: $accent-color;
   border: 1px solid transparent;
-  color: #fff;
+  color: $title-color;
 }
 
 .border-meghna {
@@ -174,7 +210,7 @@ a:hover {
   position: absolute;
   top: -4px;
   width: 50px;
-  background-color: #4EB5DE;
+  background-color: $accent-color;
 }
 
 .border-meghna-lg {
@@ -194,7 +230,7 @@ a:hover {
   position: absolute;
   top: -4px;
   width: 80px;
-  background-color: #4EB5DE;
+  background-color: $accent-color;
 }
 
 .color {
@@ -220,7 +256,7 @@ a:hover {
 }
 
 .bg-one {
-  background-color: #353b43;
+  background-color: $bg-color;
 }
 
 .bg-dark {
@@ -272,11 +308,11 @@ a:hover {
 
 a:focus,
 a:hover {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .btn-main {
-  background: #4EB5DE;
+  background: $accent-color;
   color: #fff;
   display: inline-block;
   font-size: 14px;
@@ -364,7 +400,7 @@ a:hover {
 }
 
 .title h1 span {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .title h2 {
@@ -375,7 +411,7 @@ a:hover {
 }
 
 .title h2 span {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .title p {
@@ -420,7 +456,7 @@ a:hover {
 }
 
 .header-bradcrumb a:hover {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .slick-slide {
@@ -492,7 +528,7 @@ h1.logo {
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .show>.nav-link {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .navbar-toggler:focus {
@@ -536,7 +572,7 @@ h1.logo {
 
 .hero-area .block .video-button {
   background: #fff;
-  color: #4EB5DE;
+  color: $accent-color;
   display: inline-block;
   height: 60px;
   width: 0px;
@@ -609,7 +645,7 @@ h1.logo {
 }
 
 .summary .block:hover {
-  border-bottom: 2px solid #4EB5DE;
+  border-bottom: 2px solid $accent-color;
 }
 
 .summary .block:hover .icon-box {
@@ -661,7 +697,7 @@ h1.logo {
 }
 
 .summary .block .icon-box h3 {
-  color: #afbac4;
+  color: $title-color;
 }
 
 /*=================================================================
@@ -731,7 +767,7 @@ h1.logo {
 }
 
 .post-meta a {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .post-meta>span {
@@ -792,7 +828,7 @@ h1.logo {
 }
 
 .next-prev a:hover {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .next-prev .prev-post i {
@@ -815,11 +851,11 @@ h1.logo {
 }
 
 .social-profile ul li a i:hover {
-  color: #4EB5DE;
+  color: $accent-color;
 }
 
 .post-time {
-  color: #737f8a;
+  color: $fg-color;
 }
 
 /*=================================================================
@@ -847,7 +883,7 @@ h1.logo {
 }
 
 .social-icon ul li a:hover {
-  background: #4EB5DE;
+  background: $accent-color;
 }
 
 .social-icon ul li a:hover i {
@@ -891,8 +927,8 @@ h1.logo {
 }
 
 #scrollUp:hover {
-  background-color: #4EB5DE;
-  border: 1px solid #4EB5DE;
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
 }
 
 /*=================================================================
@@ -1488,8 +1524,8 @@ figcaption {
 }
 
 .pagination .page-item .page-link:hover {
-  background: #4EB5DE;
-  border-color: #4EB5DE;
+  background: $accent-color;
+  border-color: $accent-color;
   color: #fff
 }
 
@@ -1499,9 +1535,9 @@ figcaption {
 }
 
 .pagination .page-item.active .page-link {
-  background: #4EB5DE;
+  background: $accent-color;
   color: #fff;
-  border-color: #4EB5DE;
+  border-color: $accent-color;
 }
 
 .simple-icon {
@@ -1575,7 +1611,7 @@ GUIDE SECTION
 .expander:hover {
   color: white;
   border-color: white;
-  background-color: #4EB5DE;
+  background-color: $accent-color;
 }
 
 /* TABLE OF CONTENTS */
@@ -1618,57 +1654,10 @@ GUIDE SECTION
   text-align: center;
 }
 
-.image-callout {
-  position: absolute;
+.image-with-callouts {
+  position: relative;
+  margin: 0;
   padding: 0;
-  margin: -2px;
-  border: solid 2px white;
-  overflow: hidden;
-  z-index: 100;
-  transition: border-color 0.25s, transform 0.25s;
-}
-
-.image-callout:hover {
-  border-color: #4EB5DE;
-  transform: scale(1.25);
-}
-
-.image-callout-desc {
-  position: absolute;
-  padding: 0;
-  z-index: 99;
-  overflow-y: auto;
-  transition: opacity 0.25s linear, visibility 0.25s linear 0s;
-
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
-.image-callout-desc.callout-border-bottom {
-  border-bottom: 5px solid white;
-  box-sizing: border-box;
-  margin-bottom: 2.5px;
-}
-
-.image-callout-inactive {
-  opacity: 0!important;
-  visibility: hidden;
-  transition: opacity 0.25s linear, visibility 0s linear 0.25s;
-}
-
-.image-callout-desc.callout-border-top {
-  border-top: 5px solid white;
-  box-sizing: border-box;
-  margin-top: -2.5px;
-}
-
-.image-callout-desc div {
-  margin: 1em;
-  display: block;
-}
-
-.image-callout-desc h5 {
-  padding: 0.25em;
-  border-bottom: 1px solid white;
 }
 
 .main-image {
@@ -1676,10 +1665,106 @@ GUIDE SECTION
   padding: 0;
 }
 
-.image-with-callouts {
-  position: relative;
-  margin: 0;
+.image-callout {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.image-callout-btn {
+  display: block;
+  position: absolute;
   padding: 0;
+  margin: -2px;
+  border: solid 2px white;
+  overflow: hidden;
+  z-index: 10;
+  transition: all 0.25s, z-index 0 0.25s;
+
+  .image-callout-active > & {
+    transition: all 0.25s, z-index 0.25s;
+    z-index: 25;
+  }
+
+  &:hover {
+    border-color: $accent-color;
+    transform: scale(1.25);
+  }
+}
+
+.image-callout-active {
+  & > .image-callout-shift-left {
+    transition: transform 0.25s;
+    transform-origin: right;
+  }
+
+  & > .image-callout-shift-right {
+    transition: transform 0.25s;
+    transform-origin: left;
+  }
+}
+
+.image-callout-border-bottom {
+  border-bottom: 2px solid white;
+  box-sizing: border-box;
+  margin-bottom: 1px;
+}
+
+.image-callout-border-top {
+  border-top: 2px solid white;
+  box-sizing: border-box;
+  margin-top: -1px;
+}
+
+.image-darkening {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s linear, visibility 0.25s linear;
+
+  &.image-callout-active {
+    z-index: 15;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s linear, visibility 0.25s linear;
+  }
+}
+
+.image-callout-desc {
+  position: absolute;
+  padding: 0;
+  z-index: 20;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  @include scrollbars(5px, white, black);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+
+  .image-callout-active > & {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  & div {
+    margin: 1em;
+    display: block;
+  }
+
+  & h5 {
+    padding: 0.25em;
+    border-bottom: 1px solid white;
+  }
 }
 
 /*# sourceMappingURL=maps/style.css.map */

@@ -14,10 +14,19 @@ jQuery(function ($) {
 		$("#toc").toggleClass("toggled");
 	});
 
-	$(".image-callout").click(function(e) {
+	$(".image-callout-btn").click(function(e) {
 		e.preventDefault();
-		$(this).parent(".image-with-callouts").children(".image-darkening").toggleClass("image-callout-inactive");
-		$(this).parent("a").next(".image-callout-desc").toggleClass("image-callout-inactive");
+		let baseCallout = $(this).parent(".image-callout");
+		let baseImg = $(this).parents(".image-with-callouts");
+		let darkening = baseImg.find(".image-darkening");
+
+		darkening.toggleClass("image-callout-active");
+		baseCallout.toggleClass("image-callout-active");
+	})
+
+	$(".image-darkening").click(function(e) {
+		e.preventDefault();
+		$(this).parents(".image-with-callouts").find(".image-darkening, .image-callout-desc").addClass("image-callout-inactive");
 	})
 
 	/* ========================================================================= */
