@@ -1691,6 +1691,7 @@ GUIDE SECTION
   &:hover {
     border-color: $accent-color;
     transform: scale(1.25);
+    z-index: 25;
   }
 }
 
@@ -1745,7 +1746,7 @@ GUIDE SECTION
   z-index: 20;
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.75);
-  @include scrollbars(5px, white, black);
+  @include scrollbars(5px, $fg-color, $bg-color);
 
   opacity: 0;
   visibility: hidden;
