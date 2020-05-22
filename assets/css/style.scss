@@ -1657,6 +1657,8 @@ GUIDE SECTION
 .image-with-callouts {
   position: relative;
   padding: 0;
+  margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 .main-image {
@@ -1675,9 +1677,8 @@ GUIDE SECTION
 }
 
 .image-callout-btn {
-  display: block;
+  display: grid;
   position: absolute;
-  padding: 0;
   border: solid 2px white;
   box-sizing: border-box;
   background-clip: border-box;
@@ -1685,16 +1686,27 @@ GUIDE SECTION
   overflow: hidden;
   z-index: 10;
   transition: all 0.25s, z-index 0 0.25s;
+  box-shadow: 0 0 0 change-color($accent-color, $alpha: 0.5);
+
+  padding: 0.25em;
+  font-size: 1.25em;
+  color: white;
+  text-shadow: black 1px 1px 4px;
 
   .image-callout-active > & {
     transition: all 0.25s, z-index 0.25s;
     z-index: 25;
   }
 
+  & > span {
+    display: block;
+  }
+
   &:hover {
     border-color: $accent-color;
     transform: scale(1.25);
     z-index: 25;
+    box-shadow: 0 0 20px change-color($accent-color, $alpha: 0.75);
   }
 }
 
@@ -1745,7 +1757,7 @@ GUIDE SECTION
 .image-callout-desc {
   position: absolute;
   padding: 0;
-  z-index: 20;
+  z-index: 30;
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.75);
   @include scrollbars(5px, $fg-color, $bg-color);

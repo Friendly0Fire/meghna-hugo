@@ -6,7 +6,7 @@
 <section class="hero-area">
 
 	{{ if .bg_video }}
-		<video id="hero-video" autoplay loop preload="auto" {{ with .bg_image }}poster="{{ . | absURL }}"{{ end }}>
+		<video id="hero-video" autoplay muted loop preload="auto" {{ with .bg_image }}poster="{{ . | absURL }}"{{ end }}>
 			<source src="{{ .bg_video | absURL }}" type="video/webm">
 		</video>
 	{{ end }}
