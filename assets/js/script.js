@@ -3,7 +3,16 @@
 /* ========================================================================= */
 
 $(window).on('load', function () {
-	$('.preloader').fadeOut(100);
+	let video = $('#hero-video')[0];
+	if(video === undefined || video.readyState >= 4) {
+		$('.preloader').fadeOut(100);
+		if(video !== undefined)
+			video.play();
+	} else
+		video.addEventListener('loadeddata', function() {
+			$('.preloader').fadeOut(100);
+			video.play();
+		});
 });
 
 jQuery(function ($) {
@@ -26,7 +35,7 @@ jQuery(function ($) {
 
 	$(".image-darkening").click(function(e) {
 		e.preventDefault();
-		$(this).parents(".image-with-callouts").find(".image-darkening, .image-callout-desc").addClass("image-callout-inactive");
+		$(this).parents(".image-with-callouts").find(".image-darkening, .image-callout").removeClass("image-callout-active");
 	})
 
 	/* ========================================================================= */
