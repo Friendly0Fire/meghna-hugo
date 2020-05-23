@@ -100,6 +100,7 @@ h6 {
 
 p {
   font-family: "Jost", sans-serif;
+  text-align: justify;
 }
 
 [scroll-behavior=smooth] {
@@ -1760,7 +1761,7 @@ GUIDE SECTION
   z-index: 30;
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.75);
-  @include scrollbars(5px, $fg-color, $bg-color);
+  @include scrollbars(7px, $fg-color, $bg-color);
   margin: 0 2px;
 
   opacity: 0;
@@ -1791,6 +1792,10 @@ GUIDE SECTION
     height: 100%;
     display: block;
   }
+}
+
+.simple-scrollbars {
+  @include scrollbars(7px, $fg-color, $bg-color);
 }
 
 /*# sourceMappingURL=maps/style.css.map */
