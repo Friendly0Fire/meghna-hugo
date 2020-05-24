@@ -23,6 +23,14 @@ jQuery(function ($) {
 		$("#toc").toggleClass("toggled");
 	});
 
+	$(document).mouseup(function(e) {
+		let toc = $("#toc");
+		if(toc.hasClass("toggled")) {
+			if(!toc.is(e.target) && toc.has(e.target).length == 0)
+				toc.toggleClass("toggled");
+		}
+	})
+
 	$(".image-callout-btn").click(function(e) {
 		e.preventDefault();
 		let baseCallout = $(this).parent(".image-callout");
