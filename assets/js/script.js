@@ -38,11 +38,21 @@ jQuery(function ($) {
 		$(this).parents(".image-with-callouts").find(".image-darkening, .image-callout").removeClass("image-callout-active");
 	});
 
+	let effectiveTocLevel = 0;
+	let lastTocLevel = 0;
 	$(".guide-item").find("h1, h2, h3, h4, h5, h6").filter("[id]").each(function(index) {
 		let slug = $(this).attr("id");
 		$(this).append("<a class=\"header-link fas fa-link\" href=\"#" + slug + "\"></a>");
 
-		let type = $(this).prop("nodeName").toLowerCase().replace("h", "heading");
+		let typeNum = parseInt($(this).prop("nodeName").substring(1));
+		if(typeNum > lastTocLevel) {
+			effectiveTocLevel++;
+		} else if(typeNum < lastTocLevel) {
+			effectiveTocLevel = typeNum;
+		}
+		lastTocLevel = typeNum;
+
+		let type = "heading" + effectiveTocLevel;
 		$("#toc > .list-group").append('<a href="#' + slug + '" class="list-group-item list-group-item-action ' + type + '"><i class="fas fa-chevron-right"></i> ' + $(this).text() +'</a>')
 	});
 
