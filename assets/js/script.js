@@ -18,16 +18,20 @@ $(window).on('load', function () {
 jQuery(function ($) {
 	"use strict";
 
-	$("#toc-toggle").click(function(e) {
+	$("#toc-toggle a").click(function(e) {
 		e.preventDefault();
 		$("#toc").toggleClass("toggled");
 	});
 
 	$(document).mouseup(function(e) {
+		let tocToggle = $("#toc-toggle");
+		if(tocToggle.is(e.target) || tocToggle.has(e.target).length != 0)
+			return;
+
 		let toc = $("#toc");
 		if(toc.hasClass("toggled")) {
 			if(!toc.is(e.target) && toc.has(e.target).length == 0)
-				toc.toggleClass("toggled");
+				toc.removeClass("toggled");
 		}
 	})
 

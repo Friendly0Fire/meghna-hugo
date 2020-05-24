@@ -95,6 +95,10 @@ p {
   text-align: justify;
 }
 
+.text-center p {
+  text-align: center;
+}
+
 [scroll-behavior=smooth] {
   scroll-behavior: smooth;
 }
@@ -552,21 +556,25 @@ h1.logo {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.hero-area:before {
-  content: '';
-  background: rgba(0, 0, 0, 0.63);
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
+  p {
+    text-align: center;
+  }
 
-.hero-area .block {
-  text-align: center;
-  z-index: 99;
+  .block {
+    text-align: center;
+    z-index: 99;
+  }
+
+  &:before {
+    content: '';
+    background: rgba(0, 0, 0, 0.63);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }
 
 @keyframes pulse {
@@ -1741,6 +1749,20 @@ GUIDE SECTION
   padding: 0;
   margin-top: 1em;
   margin-bottom: 2em;
+
+  &:after {
+    opacity: 0.75;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "Click on the boxes to learn more";
+    font-size: 0.65em;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    padding: 0.35em;
+    text-align: right;
+  }
 }
 
 .main-image {
