@@ -16,7 +16,7 @@
 		<div class="row row-cols-3" data-aos="fade-up" data-aos-duration="1500">
 			{{ range .summary_items }}
 			<div class="col text-center my-lg-3">
-				<a href="{{.link}}"><div class="block">
+				<a href="{{ .link}}"><div class="block{{ if not .link }} wip{{end}}">
 					<div class="icon-box">
 						{{with .icon}}<i class="{{ . }}"></i>{{ end }}
 					</div>

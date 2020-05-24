@@ -665,6 +665,23 @@ h1.logo {
     }
   }
 
+  &.wip {
+    opacity: 0.5;
+
+    &:before {
+      content: "Coming Soon";
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 40%;
+      transform-origin: center;
+      transform: rotate(-45deg);
+      font-size: 3em;
+      text-shadow: 0 0 10px black;
+      color: white;
+    }
+  }
+
   .icon-box {
     position: relative;
     width: 160px;
