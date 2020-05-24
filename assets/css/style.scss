@@ -569,19 +569,32 @@ h1.logo {
   z-index: 99;
 }
 
-.hero-area .block .video-button {
-  background: #fff;
-  color: $accent-color;
-  display: inline-block;
-  height: 60px;
-  width: 0px;
-  border-radius: 50px;
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 100px 40px $accent-color;
+  }
+  50% {
+    box-shadow: 0 0 100px 60px $accent-color;
+  }
+  100% {
+    box-shadow: 0 0 100px 40px $accent-color;
+  }
 }
 
-.hero-area .block .video-button i {
-  line-height: 60px;
-  font-size: 20px;
-  margin-left: 3px;
+
+.hero-area .block .btn {
+  color: white;
+  transition: all 0.3s;
+  text-shadow: none;
+
+  &:hover {
+    transition: all 0.3s, box-shadow 2s;
+    box-shadow: 0 0 100px 40px $accent-color;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+  }
 }
 
 .hero-area .block h1 {
