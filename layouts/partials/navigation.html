@@ -71,13 +71,11 @@
 
 {{ if eq .Page.Kind "page" }}
 <div id="toc">
+	<h4>Table of Contents</h4>
 	<div class="list-group list-group-flush">
-	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Dashboard</a>
-	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Shortcuts</a>
-	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Overview</a>
-	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Events</a>
-	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Profile</a>
-	<a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chevron-right"></i> Status</a>
+		<a href="#top" class="list-group-item list-group-item-action">
+			<i class="fas fa-arrow-up"></i> Back to Top
+		</a>
 	</div>
 </div>
 {{ end }}

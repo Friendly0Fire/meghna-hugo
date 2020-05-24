@@ -1,3 +1,5 @@
+{{ .Page.Scratch.Set "inline-css" slice }}
+
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-us{{ end }}">
 {{ partial "head.html" . }}
@@ -8,13 +10,6 @@
   {{- partial "footer.html" . -}}
 </body>
 
-{{ with (.Page.Scratch.Get "inline-css") }}
-<!-- Collected inline CSS -->
-<style>
-  {{ range $css := . }}
-  {{ $css | safeCSS }}
-  {{ end }}
-</style>
-{{ end }}
+{{- partial "inlinecss.html" . -}}
 
 </html>

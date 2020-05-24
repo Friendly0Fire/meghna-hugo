@@ -31,12 +31,20 @@ jQuery(function ($) {
 
 		darkening.toggleClass("image-callout-active");
 		baseCallout.toggleClass("image-callout-active");
-	})
+	});
 
 	$(".image-darkening").click(function(e) {
 		e.preventDefault();
 		$(this).parents(".image-with-callouts").find(".image-darkening, .image-callout").removeClass("image-callout-active");
-	})
+	});
+
+	$(".guide-item").find("h1, h2, h3, h4, h5, h6").filter("[id]").each(function(index) {
+		let slug = $(this).attr("id");
+		$(this).append("<a class=\"header-link fas fa-link\" href=\"#" + slug + "\"></a>");
+
+		let type = $(this).prop("nodeName").toLowerCase().replace("h", "heading");
+		$("#toc > .list-group").append('<a href="#' + slug + '" class="list-group-item list-group-item-action ' + type + '"><i class="fas fa-chevron-right"></i> ' + $(this).text() +'</a>')
+	});
 
 	/* ========================================================================= */
 	/*	lazy load initialize
