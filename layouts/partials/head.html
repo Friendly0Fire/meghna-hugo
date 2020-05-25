@@ -9,6 +9,20 @@
 	<meta name="author" content="{{ . }}">{{ end }}
 	{{ hugo.Generator }}
 
+	{{ range .Site.Params.plugins.css }}
+		{{ if .asset }}
+			{{ $res := resources.Get .asset }}
+
+			{{ if $res }}
+				{{ $.Scratch.Add "csslibs" (slice $res)}}
+			{{ end }}
+		{{ else if .link }}
+<link rel="stylesheet" href="{{ .link | absURL }}">
+		{{ end }}
+	{{ end }}
+	{{ $fullstyle := (.Scratch.Get "csslibs") | resources.Concat "/css/vendor.css" | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $fullstyle.Permalink }}" media="screen">
+
 	{{ "<!-- plugins -->" | safeHTML }}
 	{{ range .Site.Params.plugins.css }}
 	<link rel="stylesheet" href="{{ .link | absURL }}">

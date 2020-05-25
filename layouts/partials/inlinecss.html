@@ -2,6 +2,6 @@
 {{ with (.Page.Scratch.Get "inline-css") }}
 <!-- Collected inline CSS -->
 {{ $css := delimit . "\n" }}
-{{ $cssFile := $css | resources.FromString (delimit (slice "css/" (sha1 $.Permalink)) "") | resources.ToCSS | resources.PostCSS | minify | fingerprint }}
+{{ $cssFile := $css | resources.FromString (delimit (slice "css/page_" (sha1 $.Permalink)) "") | resources.ToCSS | resources.PostCSS | minify }}
 <link rel="stylesheet" href="{{ $cssFile.Permalink }}">
 {{ end }}
