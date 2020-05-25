@@ -54,7 +54,16 @@ jQuery(function ($) {
 	let lastTocLevel = 0;
 	$(".guide-item").find("h1, h2, h3, h4, h5, h6").filter("[id]").each(function(index) {
 		let slug = $(this).attr("id");
-		$(this).append("<a class='header-link fas fa-link tooltipster' href='#' title='Copy link to clipboard'></a>");
+		$(this).append("<a class='header-link fas fa-link tooltipster' href='#' title='Copy link to clipboard'></a>").click(function(e) {
+			e.preventDefault();
+			navigator.clipboard.writeText(document.URL.replace(/#.*$/, "") + "#" + slug).then(() => {
+				let instance = $(e.target).tooltipster('instance');
+				instance.content("Copied!");
+				instance.one('closing', function(e) {
+					instance.content("Copy link to clipboard");
+				});
+			});
+		});
 
 		let typeNum = parseInt($(this).prop("nodeName").substring(1));
 		if(typeNum > lastTocLevel) {
@@ -99,6 +108,22 @@ jQuery(function ($) {
 				return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
 			}
 			return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+		}
+	});
+
+
+	$('.tooltipster').tooltipster({
+		trigger: 'custom',
+		triggerOpen: {
+			mouseenter: true,
+			click: true,
+			touchstart: true,
+			tap: true
+		},
+		triggerClose: {
+			scroll: true,
+			mouseleave: true,
+			touchleave: true
 		}
 	});
 
