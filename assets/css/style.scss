@@ -40,6 +40,24 @@ $accent-font: "Ailerons";
   }
 }
 
+@mixin scaled-font-size($scalable-size, $max-size, $min-size: 0) {
+  $max-breakpoint: 100vw / $scalable-size * $max-size;
+  $min-breakpoint: 100vw / $scalable-size * $min-size;
+
+  @media screen and (min-width: $max-breakpoint) {
+    font-size: $max-size;
+  }
+
+  @if $min-size > 0 {
+    font-size: $min-size;
+    @media screen and (min-width: $min-breakpoint) and (max-width: $max-breakpoint) {
+      font-size: $scalable-size;
+    }
+  } @else {
+    font-size: $scalable-size;
+  }
+}
+
 @font-face {
   font-family: "Jost";
   font-weight: 400;
@@ -341,18 +359,6 @@ a:hover {
   padding: 100px 0;
 }
 
-@media (max-width: 480px) {
-  .section {
-    padding: 50px 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: 80px 0;
-  }
-}
-
 .section-sm {
   padding: 70px 0;
 }
@@ -446,7 +452,11 @@ a:hover {
 h1.logo {
   color: #FFF;
   text-transform: uppercase;
-  font-size: 2.4em;
+  @include scaled-font-size(4vw, 2.4em, 30px);
+  word-wrap: break-word;
+  @media screen and (max-width: 35em) {
+    display: none;
+  }
 }
 
 .single-page-header {
@@ -478,6 +488,16 @@ h1.logo {
   font-size: 1.2em;
 }
 
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .navbar-brand {
+    flex-grow: 0;
+  }
+}
+
 .navbar-dark .navbar-nav .active>.nav-link,
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link.show,
@@ -502,7 +522,7 @@ h1.logo {
 
 .hero-area {
   background-size: cover;
-  height: 100vh;
+  height: 100vmin;
   position: relative;
   display: flex;
   justify-content: center;
@@ -546,18 +566,20 @@ h1.logo {
   transition: all 0.3s;
   text-shadow: none;
 
-  &:hover {
-    transition: all 0.3s, box-shadow 2s;
-    box-shadow: 0 0 100px 40px $accent-color;
-    animation-name: pulse;
-    animation-duration: 2s;
-    animation-delay: 1s;
-    animation-iteration-count: infinite;
+  @media (hover: hover) {
+    &:hover {
+      transition: all 0.3s, box-shadow 2s;
+      box-shadow: 0 0 100px 40px $accent-color;
+      animation-name: pulse;
+      animation-duration: 2s;
+      animation-delay: 1s;
+      animation-iteration-count: infinite;
+    }
   }
 }
 
 .hero-area .block h1 {
-  font-size: 90px;
+  @include scaled-font-size(8vw, 6em, 30px);
   color: #fff;
   font-weight: 200;
   text-transform: uppercase;
@@ -566,7 +588,7 @@ h1.logo {
 
 .hero-area .block p {
   color: #fff;
-  font-size: 30px;
+  @include scaled-font-size(4vw, 2.5em, 15px);
   width: 70%;
   margin: 0 auto;
 }
@@ -615,12 +637,14 @@ h1.logo {
   height: 100%;
   color: $title-color;
 
-  &:hover {
-    border-bottom: 2px solid $accent-color;
+  @media (hover: hover) {
+    &:hover {
+      border-bottom: 2px solid $accent-color;
 
-    .icon-box {
-      transform: translateY(-10px);
-      color: $accent-color;
+      .icon-box {
+        transform: translateY(-10px);
+        color: $accent-color;
+      }
     }
   }
 
@@ -1758,11 +1782,13 @@ GUIDE SECTION
     display: block;
   }
 
-  &:hover {
-    border-color: $accent-color;
-    transform: scale(1.25);
-    z-index: 25;
-    box-shadow: 0 0 20px change-color($accent-color, $alpha: 0.75);
+  @media (hover: hover) {
+    &:hover {
+      border-color: $accent-color;
+      transform: scale(1.25);
+      z-index: 25;
+      box-shadow: 0 0 20px change-color($accent-color, $alpha: 0.75);
+    }
   }
 }
 
