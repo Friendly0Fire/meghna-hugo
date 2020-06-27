@@ -127,4 +127,48 @@ jQuery(function ($) {
 		}
 	});
 
+	$('.simple-video-play').click(function() {
+		var icon = $(this).children('i');
+		icon.toggleClass('fa-play');
+		icon.toggleClass('fa-pause');
+		var media = $(this).parents('.simple-video').children('video').get(0);
+		if(media.paused)
+			media.play();
+		else
+			media.pause();
+	});
+
+	$('.simple-video-rewind').click(function() {
+		var media = $(this).parents('.simple-video').children('video').get(0);
+		media.currentTime = 0;
+	});
+
+	var videoAutoplay = function() {
+		var media = $('video').not("[autoplay='autoplay']");
+
+		var scrollMid = $(window).scrollTop() + $(window).height() * 0.5;
+
+		media.each(function(index, el) {
+			var yTopMedia = $(this).offset().top;
+			var yStartMedia = $(this).height() * 0.1 + yTopMedia;
+			var yEndMedia = $(this).height() * 0.9 + yTopMedia;
+
+			var playControl = $(this).parents('.simple-video').find('.simple-video-play > i');
+
+			var doPlay = scrollMid < yEndMedia && scrollMid > yStartMedia;
+
+			if(doPlay) {
+				$(this).get(0).play();
+				playControl.removeClass('fa-play');
+				playControl.addClass('fa-pause');
+			} else {
+				$(this).get(0).pause();
+				playControl.addClass('fa-play');
+				playControl.removeClass('fa-pause');
+			}
+		});
+	};
+
+	$(document).on('scroll', videoAutoplay);
+	videoAutoplay();
 });

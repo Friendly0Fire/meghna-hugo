@@ -1868,6 +1868,19 @@ GUIDE SECTION
 .simple-video {
   max-width: 100%;
   margin-bottom: 1em;
+  position: relative;
+
+  .simple-video-control {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    z-index: 999;
+    font-size: 2em;
+
+    a:hover {
+      color: $accent-color;
+    }
+  }
 
   video {
     width: 100%;
